@@ -5,7 +5,13 @@
 const CONFIG = {
   WHATSAPP: "17257260590",
   EMAIL: "partnerships@hybridenergynv.com",
-  WHATSAPP_MSG: "Hello! I would like a solar energy quote from Hybrid Energy.",
+  WHATSAPP_MSG:
+    "Hello! I would like a solar energy quote from Hybrid Energy.\n\n" +
+    "• Full Name: \n" +
+    "• Email Address: \n" +
+    "• Phone Number: \n" +
+    "• Monthly Electric Bill: \n" +
+    "• Home Address: ",
   USE_FORMSUBMIT: true // Envia diretamente em segundo plano para o e-mail via FormSubmit; fallback para mailto se offline
 };
 
@@ -82,19 +88,39 @@ if (track) {
 }
 
 /* WhatsApp */
-const wa = $("#wa");
-if (wa) {
+function getWhatsAppUrl() {
+  const name = $("#f-name")?.value.trim() || "";
+  const email = $("#f-email")?.value.trim() || "";
+  const phone = $("#f-phone")?.value.trim() || "";
+  const bill = $("#f-bill")?.value.trim() || "";
+  const address = $("#f-address")?.value.trim() || "";
+
+  const msg =
+    `Hello! I would like a solar energy quote from Hybrid Energy.\n\n` +
+    `• Full Name: ${name}\n` +
+    `• Email Address: ${email}\n` +
+    `• Phone Number: ${phone}\n` +
+    `• Monthly Electric Bill: ${bill}\n` +
+    `• Home Address: ${address}`;
+
+  return `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(msg)}`;
+}
+
+document.querySelectorAll('a[href*="wa.me"], #wa').forEach((link) => {
   if (CONFIG.WHATSAPP) {
-    wa.href = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(CONFIG.WHATSAPP_MSG)}`;
-    wa.target = "_blank";
-    wa.rel = "noopener";
+    link.href = getWhatsAppUrl();
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.addEventListener("click", () => {
+      link.href = getWhatsAppUrl();
+    });
   } else {
-    wa.addEventListener("click", (e) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
       notify("WhatsApp number not configured yet.", true);
     });
   }
-}
+});
 
 /* Lead Form */
 const form = $("#form"), msg = $("#msg"), submitBtn = $("#submitBtn");
