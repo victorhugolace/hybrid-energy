@@ -4,8 +4,9 @@
    EMAIL:    address that will receive the form requests. */
 const CONFIG = {
   WHATSAPP: "",
-  EMAIL: "",
-  WHATSAPP_MSG: "Hello! I would like a solar energy quote from Hybrid Energy."
+  EMAIL: "partnerships@hybridenergynv.com",
+  WHATSAPP_MSG: "Hello! I would like a solar energy quote from Hybrid Energy.",
+  USE_FORMSUBMIT: true // Envia diretamente em segundo plano para o e-mail via FormSubmit; fallback para mailto se offline
 };
 
 const $ = (s) => document.querySelector(s);
@@ -96,7 +97,7 @@ if (wa) {
 }
 
 /* Lead Form */
-const form = $("#form"), msg = $("#msg");
+const form = $("#form"), msg = $("#msg"), submitBtn = $("#submitBtn");
 function notify(text, isError) {
   if (!msg) return;
   msg.textContent = text;
@@ -128,14 +129,63 @@ if (form) {
       `Home Address: ${d.address}\n` +
       `SMS Consent: ${consent}`;
 
-    if (CONFIG.EMAIL) {
-      location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent("New Solar Analysis Request - Hybrid Energy")}&body=${encodeURIComponent(body)}`;
-    } else {
+    if (!CONFIG.EMAIL) {
       console.info("Lead submission payload:\n" + body);
+      return notify("Destination email not configured yet.", true);
     }
 
-    notify("✓ Thanks! Your request has been received — we'll be in touch within 24 hours.", false);
-    form.reset();
+    if (CONFIG.USE_FORMSUBMIT) {
+      const originalText = submitBtn ? submitBtn.textContent : "Get My Free Solar Analysis";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+      }
+      notify("Sending your request...", false);
+
+      fetch(`https://formsubmit.co/ajax/${CONFIG.EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: "New Solar Analysis Request - Hybrid Energy",
+          _replyto: d.email,
+          _template: "table",
+          _captcha: "false",
+          "Full Name": d.name,
+          "Email Address": d.email,
+          "Phone Number": d.phone,
+          "Monthly Electric Bill": d.bill,
+          "Home Address": d.address,
+          "SMS Consent": consent
+        })
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Submission failed");
+          return res.json();
+        })
+        .then(() => {
+          notify("✓ Thanks! Your request has been received — we'll be in touch within 24 hours.", false);
+          form.reset();
+        })
+        .catch((err) => {
+          console.warn("FormSubmit error, falling back to mail client:", err);
+          location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent("New Solar Analysis Request - Hybrid Energy")}&body=${encodeURIComponent(body)}`;
+          notify("✓ Thanks! Your request has been received — we'll be in touch within 24 hours.", false);
+          form.reset();
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        });
+    } else {
+      location.href = `mailto:${CONFIG.EMAIL}?subject=${encodeURIComponent("New Solar Analysis Request - Hybrid Energy")}&body=${encodeURIComponent(body)}`;
+      notify("✓ Thanks! Your request has been received — we'll be in touch within 24 hours.", false);
+      form.reset();
+    }
   });
 }
 
