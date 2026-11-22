@@ -3,7 +3,7 @@
    WHATSAPP: digits only, with country code and area code. E.g. "15551234567"
    EMAIL:    address that will receive the form requests. */
 const CONFIG = {
-  WHATSAPP: "",
+  WHATSAPP: "17257260590",
   EMAIL: "partnerships@hybridenergynv.com",
   WHATSAPP_MSG: "Hello! I would like a solar energy quote from Hybrid Energy.",
   USE_FORMSUBMIT: true // Envia diretamente em segundo plano para o e-mail via FormSubmit; fallback para mailto se offline

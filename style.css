@@ -1030,7 +1030,7 @@ details p {
 
 .foot-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1.1fr;
   gap: 48px;
 }
 
@@ -1074,6 +1074,31 @@ details p {
 }
 
 .foot-links a:hover {
+  color: var(--teal);
+}
+
+.foot-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.foot-contact-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #8f9ba8;
+  font-size: 14px;
+  transition: color .2s;
+  word-break: break-word;
+}
+
+.foot-contact-list a svg {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.foot-contact-list a:hover {
   color: var(--teal);
 }
 
