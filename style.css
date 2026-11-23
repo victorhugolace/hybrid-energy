@@ -197,8 +197,9 @@ h4 {
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
-  margin-left: auto;
+  flex: 1;
   font-size: 14px;
   font-weight: 600;
   color: var(--mut);
