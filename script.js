@@ -1,17 +1,12 @@
 /* ========= CONFIGURATION =========
    Fill in before publishing.
-   WHATSAPP: digits only, with country code and area code. E.g. "15551234567"
+   PHONE:    digits only, with country code. E.g. "17257260590"
    EMAIL:    address that will receive the form requests. */
 const CONFIG = {
+  PHONE: "17257260590",
+  PHONE_DISPLAY: "(725) 726-0590",
   WHATSAPP: "17257260590",
   EMAIL: "partnerships@hybridenergynv.com",
-  WHATSAPP_MSG:
-    "Hello! I would like a solar energy quote from Hybrid Energy.\n\n" +
-    "• Full Name: \n" +
-    "• Email Address: \n" +
-    "• Phone Number: \n" +
-    "• Monthly Electric Bill: \n" +
-    "• Home Address: ",
   USE_FORMSUBMIT: true // Envia diretamente em segundo plano para o e-mail via FormSubmit; fallback para mailto se offline
 };
 
@@ -87,26 +82,47 @@ if (track) {
   track.innerHTML = REVIEWS.map(createCard).join("") + REVIEWS.map(createCard).join("");
 }
 
-/* WhatsApp */
-function getWhatsAppUrl() {
+/* Messaging (SMS & WhatsApp) */
+function buildTemplateMessage() {
   const name = $("#f-name")?.value.trim() || "";
   const email = $("#f-email")?.value.trim() || "";
   const phone = $("#f-phone")?.value.trim() || "";
   const bill = $("#f-bill")?.value.trim() || "";
   const address = $("#f-address")?.value.trim() || "";
 
-  const msg =
+  return (
     `Hello! I would like a solar energy quote from Hybrid Energy.\n\n` +
     `• Full Name: ${name}\n` +
     `• Email Address: ${email}\n` +
     `• Phone Number: ${phone}\n` +
     `• Monthly Electric Bill: ${bill}\n` +
-    `• Home Address: ${address}`;
+    `• Home Address: ${address}`
+  );
+}
 
+function getSmsUrl() {
+  const msg = buildTemplateMessage();
+  // iOS Safari usa '&body=' enquanto Android/outros navegadores usam '?body='
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const sep = isIOS ? "&" : "?";
+  return `sms:+${CONFIG.PHONE}${sep}body=${encodeURIComponent(msg)}`;
+}
+
+function getWhatsAppUrl() {
+  const msg = buildTemplateMessage();
   return `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 
-document.querySelectorAll('a[href*="wa.me"], #wa').forEach((link) => {
+/* SMS Links */
+document.querySelectorAll('a[href^="sms:"], #smsBtn, .sms-link').forEach((link) => {
+  link.href = getSmsUrl();
+  link.addEventListener("click", () => {
+    link.href = getSmsUrl();
+  });
+});
+
+/* WhatsApp Links */
+document.querySelectorAll('a[href*="wa.me"], #wa, .wa-link').forEach((link) => {
   if (CONFIG.WHATSAPP) {
     link.href = getWhatsAppUrl();
     link.target = "_blank";

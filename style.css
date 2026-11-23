@@ -930,8 +930,11 @@ details p {
   flex-shrink: 0;
 }
 
-.btn-wa {
+.btn-wa,
+.btn-sms {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .form {
