@@ -10,6 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  (function() {
+    const t = localStorage.getItem("hybrid_theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
 </head>
 <body>
 
@@ -20,15 +26,24 @@
       <span>Hybrid Energy</span>
     </a>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#benefits">Why Switch</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#tpo">2026 TPO Solar</a>
-      <a href="#why-choose">Why Us</a>
-      <a href="#impact">Our Impact</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
+      <a href="#benefits" data-i18n="nav_why">Why Switch</a>
+      <a href="#how-it-works" data-i18n="nav_how">How It Works</a>
+      <a href="#tpo" data-i18n="nav_tpo">2026 TPO Solar</a>
+      <a href="#why-choose" data-i18n="nav_why_us">Why Us</a>
+      <a href="#impact" data-i18n="nav_impact">Our Impact</a>
+      <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </nav>
-    <a href="#contact" class="btn btn-teal btn-sm">Get Free Quote</a>
+    <div class="header-tools">
+      <button class="tool-btn lang-btn" id="langToggle" type="button" aria-label="Cambiar idioma a Español" title="Language: EN / ES">
+        <span id="langLabel">ES</span>
+      </button>
+      <button class="tool-btn theme-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle Theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
+    <a href="#contact" class="btn btn-teal btn-sm" data-i18n="cta_quote">Get Free Quote</a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
       <span></span><span></span>
     </button>
@@ -41,23 +56,23 @@
   <div class="sun" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div class="hero-text">
-      <p class="pill"><i></i> ⚡ Trusted By Homeowners Across The USA</p>
-      <h1>Solar Energy<br><span class="teal-text">Made Simple</span></h1>
-      <p class="lead">Potentially <strong class="hl">eliminate</strong> your energy bill with premium solar panels. <strong class="hl">Zero upfront costs</strong>, <strong class="hl-green">instant savings</strong>, and a <strong class="hl">25-year warranty</strong>.</p>
+      <p class="pill" data-i18n="hero_pill"><i></i> ⚡ Trusted By Homeowners Across The USA</p>
+      <h1 data-i18n="hero_title">Solar Energy<br><span class="teal-text">Made Simple</span></h1>
+      <p class="lead" data-i18n="hero_lead">Potentially <strong class="hl">eliminate</strong> your energy bill with premium solar panels. <strong class="hl">Zero upfront costs</strong>, <strong class="hl-green">instant savings</strong>, and a <strong class="hl">25-year warranty</strong>.</p>
       <div class="actions">
-        <a href="#contact" class="btn btn-teal">
+        <a href="#contact" class="btn btn-teal" data-i18n="hero_btn_quote">
           Get Free Quote
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-        <a href="#contact" class="btn btn-line">
+        <a href="#contact" class="btn btn-line" data-i18n="hero_btn_calc">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="8" y2="10"></line><line x1="12" y1="10" x2="12" y2="10"></line><line x1="16" y1="10" x2="16" y2="10"></line></svg>
           Calculate Savings
         </a>
       </div>
       <ul class="stats">
-        <li><b>$2.5M+</b><span>Customer Savings</span></li>
-        <li><b>25 Yrs</b><span>Warranty</span></li>
-        <li><b>4.9★</b><span>Customer Rating</span></li>
+        <li><b>$2.5M+</b><span data-i18n="stat_savings">Customer Savings</span></li>
+        <li><b>25 Yrs</b><span data-i18n="stat_warranty">Warranty</span></li>
+        <li><b>4.9★</b><span data-i18n="stat_rating">Customer Rating</span></li>
       </ul>
     </div>
   </div>
@@ -67,62 +82,62 @@
 <section class="sec" id="benefits">
   <div class="wrap">
     <div class="head">
-      <h2>Why Switch to Solar?</h2>
-      <p>Solar energy offers immediate and long-term benefits for your home and wallet</p>
+      <h2 data-i18n="why_title">Why Switch to Solar?</h2>
+      <p data-i18n="why_sub">Solar energy offers immediate and long-term benefits for your home and wallet</p>
     </div>
     <div class="grid3">
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><path d="M6 13l6 6 6-6"></path></svg>
         </div>
-        <h3>Lower Your Electricity Bill</h3>
-        <p>Reduce or eliminate monthly utility costs</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_1_title">Lower Your Electricity Bill</h3>
+        <p data-i18n="why_1_desc">Reduce or eliminate monthly utility costs</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path></svg>
         </div>
-        <h3>Protection from Rate Hikes</h3>
-        <p>Lock in your energy costs today</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_2_title">Protection from Rate Hikes</h3>
+        <p data-i18n="why_2_desc">Lock in your energy costs today</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"></path><path d="M5 10v10h14V10"></path><circle cx="12" cy="14" r="1.6"></circle></svg>
         </div>
-        <h3>Increase Home Value</h3>
-        <p>Homes with solar sell faster &amp; for more</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_3_title">Increase Home Value</h3>
+        <p data-i18n="why_3_desc">Homes with solar sell faster &amp; for more</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V8l7-5 7 5v13"></path><line x1="9" y1="21" x2="9" y2="13"></line><line x1="15" y1="21" x2="15" y2="13"></line></svg>
         </div>
-        <h3>State Tax Incentives</h3>
-        <p>Maximize available incentives &amp; rebates</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_4_title">State Tax Incentives</h3>
+        <p data-i18n="why_4_desc">Maximize available incentives &amp; rebates</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
         </div>
-        <h3>Whole-Home Backup Power</h3>
-        <p>Never lose power during outages</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_5_title">Whole-Home Backup Power</h3>
+        <p data-i18n="why_5_desc">Never lose power during outages</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C16 5 17 4.5 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></svg>
         </div>
-        <h3>Reduce Carbon Footprint</h3>
-        <p>Make a positive environmental impact</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="why_6_title">Reduce Carbon Footprint</h3>
+        <p data-i18n="why_6_desc">Make a positive environmental impact</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
     </div>
   </div>
@@ -132,33 +147,33 @@
 <section class="sec sec-gray" id="how-it-works">
   <div class="wrap">
     <div class="head">
-      <h2>How Hybrid Energy Works</h2>
-      <p>Four simple steps to clean, affordable energy</p>
+      <h2 data-i18n="how_title">How Hybrid Energy Works</h2>
+      <p data-i18n="how_sub">Four simple steps to clean, affordable energy</p>
     </div>
     <ol class="steps">
       <li>
         <span>1</span>
         <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-        <h3>Free Consultation</h3>
-        <p>Share your energy goals, roof details, and budget. We analyze your home and current utility costs to understand your needs.</p>
+        <h3 data-i18n="how_1_title">Free Consultation</h3>
+        <p data-i18n="how_1_desc">Share your energy goals, roof details, and budget. We analyze your home and current utility costs to understand your needs.</p>
       </li>
       <li>
         <span>2</span>
         <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-        <h3>We Compare Everything</h3>
-        <p>Our team reviews dozens of installers in your area, comparing pricing, equipment quality, warranties, and customer reviews.</p>
+        <h3 data-i18n="how_2_title">We Compare Everything</h3>
+        <p data-i18n="how_2_desc">Our team reviews dozens of installers in your area, comparing pricing, equipment quality, warranties, and customer reviews.</p>
       </li>
       <li>
         <span>3</span>
         <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg></div>
-        <h3>Custom Recommendations</h3>
-        <p>Receive a clear breakdown of the top 2-3 options tailored to your home, with transparent pricing and projected savings.</p>
+        <h3 data-i18n="how_3_title">Custom Recommendations</h3>
+        <p data-i18n="how_3_desc">Receive a clear breakdown of the top 2-3 options tailored to your home, with transparent pricing and projected savings.</p>
       </li>
       <li>
         <span>4</span>
         <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg></div>
-        <h3>You Choose &amp; Save</h3>
-        <p>Select the option that fits best. We coordinate installation, handle paperwork, and ensure everything goes smoothly.</p>
+        <h3 data-i18n="how_4_title">You Choose &amp; Save</h3>
+        <p data-i18n="how_4_desc">Select the option that fits best. We coordinate installation, handle paperwork, and ensure everything goes smoothly.</p>
       </li>
     </ol>
   </div>
@@ -168,32 +183,32 @@
 <section class="sec dark" id="tpo">
   <div class="wrap">
     <div class="head head-center">
-      <h2>2026 Changes Everything: <span class="teal-text">TPO Solar</span> is Now the Smartest Path</h2>
-      <p>With new federal legislation, TPO (Third-Party Ownership) structures like PPA and Solar Leases are now the most accessible way for homeowners to save money with solar.</p>
+      <h2 data-i18n="tpo_title">2026 Changes Everything: <span class="teal-text">TPO Solar</span> is Now the Smartest Path</h2>
+      <p data-i18n="tpo_sub">With new federal legislation, TPO (Third-Party Ownership) structures like PPA and Solar Leases are now the most accessible way for homeowners to save money with solar.</p>
     </div>
     <div class="grid3 tpo-grid">
       <div class="tpo-card">
         <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
-        <h3>Safe Harboring</h3>
-        <p>Lock in today's tax credit rates and incentive structures before installation, protecting you from future reductions.</p>
+        <h3 data-i18n="tpo_1_title">Safe Harboring</h3>
+        <p data-i18n="tpo_1_desc">Lock in today's tax credit rates and incentive structures before installation, protecting you from future reductions.</p>
       </div>
       <div class="tpo-card">
         <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5a2.5 2 0 0 1 2.5-1.5c1.4 0 2.5.7 2.5 1.7 0 2.3-5 1.3-5 3.6 0 1 1.1 1.7 2.5 1.7a2.5 2 0 0 0 2.5-1.5"></path></svg></div>
-        <h3>$0 Down TPO</h3>
-        <p>No upfront costs, guaranteed performance, and lower monthly rates than your utility bill.</p>
+        <h3 data-i18n="tpo_2_title">$0 Down TPO</h3>
+        <p data-i18n="tpo_2_desc">No upfront costs, guaranteed performance, and lower monthly rates than your utility bill.</p>
       </div>
       <div class="tpo-card">
         <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><path d="M10 9l-2 3h3l-2 3"></path></svg></div>
-        <h3>Energy Independence</h3>
-        <p>Stable pricing and predictable bills while utilities continue raising rates year after year.</p>
+        <h3 data-i18n="tpo_3_title">Energy Independence</h3>
+        <p data-i18n="tpo_3_desc">Stable pricing and predictable bills while utilities continue raising rates year after year.</p>
       </div>
     </div>
     <div class="actions actions-center">
-      <a href="#faq" class="btn btn-line btn-line-light">
+      <a href="#faq" class="btn btn-line btn-line-light" data-i18n="tpo_btn_changes">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
         Learn More About 2026 Changes
       </a>
-      <a href="#contact" class="btn btn-teal">Lock In Your Benefits Today</a>
+      <a href="#contact" class="btn btn-teal" data-i18n="tpo_btn_lock">Lock In Your Benefits Today</a>
     </div>
   </div>
 </section>
@@ -202,62 +217,62 @@
 <section class="sec" id="why-choose">
   <div class="wrap">
     <div class="head">
-      <h2>Why Homeowners Choose Hybrid Energy</h2>
-      <p>The smart way to go solar — transparent, unbiased, and designed to save you money</p>
+      <h2 data-i18n="choose_title">Why Homeowners Choose Hybrid Energy</h2>
+      <p data-i18n="choose_sub">The smart way to go solar — transparent, unbiased, and designed to save you money</p>
     </div>
     <div class="grid3">
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
         </div>
-        <h3>Coverage Across The USA</h3>
-        <p>Top-rated solar pros Across USA</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_1_title">Coverage Across The USA</h3>
+        <p data-i18n="choose_1_desc">Top-rated solar pros Across USA</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
         </div>
-        <h3>Objective &amp; Transparent</h3>
-        <p>Unbiased recommendations that work for you</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_2_title">Objective &amp; Transparent</h3>
+        <p data-i18n="choose_2_desc">Unbiased recommendations that work for you</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line><path d="M10 9l-2 3h3l-2 3"></path></svg>
         </div>
-        <h3>Whole-Home Battery Backup</h3>
-        <p>Stay powered through storms &amp; blackouts</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_3_title">Whole-Home Battery Backup</h3>
+        <p data-i18n="choose_3_desc">Stay powered through storms &amp; blackouts</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5a2.5 2 0 0 1 2.5-1.5c1.4 0 2.5.7 2.5 1.7 0 2.3-5 1.3-5 3.6 0 1 1.1 1.7 2.5 1.7a2.5 2 0 0 0 2.5-1.5"></path></svg>
         </div>
-        <h3>Zero-Down TPO Options</h3>
-        <p>$0 down with instant savings from day one</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_4_title">Zero-Down TPO Options</h3>
+        <p data-i18n="choose_4_desc">$0 down with instant savings from day one</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><rect x="7" y="11" width="3" height="6"></rect><rect x="12" y="7" width="3" height="10"></rect><rect x="17" y="13" width="3" height="4"></rect></svg>
         </div>
-        <h3>We Compare Everything</h3>
-        <p>All options analyzed so you don't have to</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_5_title">We Compare Everything</h3>
+        <p data-i18n="choose_5_desc">All options analyzed so you don't have to</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
 
       <article class="choose-card">
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="2" y="13" width="4" height="6" rx="1.5"></rect><rect x="18" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a3 3 0 0 1-3 3h-3"></path></svg>
         </div>
-        <h3>End-to-End Support</h3>
-        <p>We manage the entire process for you</p>
-        <a href="#contact" class="learn">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <h3 data-i18n="choose_6_title">End-to-End Support</h3>
+        <p data-i18n="choose_6_desc">We manage the entire process for you</p>
+        <a href="#contact" class="learn" data-i18n="learn_more">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
     </div>
   </div>
@@ -267,8 +282,8 @@
 <section class="impact" id="impact" aria-label="Our impact">
   <div class="wrap">
     <div class="impact-head">
-      <h2>Our Impact</h2>
-      <p>Making a difference, one home at a time</p>
+      <h2 data-i18n="impact_title">Our Impact</h2>
+      <p data-i18n="impact_sub">Making a difference, one home at a time</p>
     </div>
     <div class="impact-grid">
       <div class="impact-box">
@@ -276,24 +291,24 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line><line x1="5" y1="5" x2="7" y2="7"></line><line x1="17" y1="17" x2="19" y2="19"></line><line x1="19" y1="5" x2="17" y2="7"></line><line x1="7" y1="17" x2="5" y2="19"></line></svg>
         </div>
         <b data-count="17000" data-suffix="+">17,000+</b>
-        <div class="impact-title">Solar Projects Installed Nationwide</div>
-        <p>Homeowners we've helped connect with trusted providers across America</p>
+        <div class="impact-title" data-i18n="impact_1_label">Solar Projects Installed Nationwide</div>
+        <p data-i18n="impact_1_desc">Homeowners we've helped connect with trusted providers across America</p>
       </div>
       <div class="impact-box">
         <div class="impact-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"></path><path d="M5 10v10h14V10"></path><path d="M9 16a3 3 0 0 0 6 0"></path></svg>
         </div>
         <b data-count="1000" data-suffix="+">1,000+</b>
-        <div class="impact-title">Happy Homeowners</div>
-        <p>Verified clients who reduced bills, increased home value, &amp; gained energy independence</p>
+        <div class="impact-title" data-i18n="impact_2_label">Happy Homeowners</div>
+        <p data-i18n="impact_2_desc">Verified clients who reduced bills, increased home value, &amp; gained energy independence</p>
       </div>
       <div class="impact-box">
         <div class="impact-circle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V11"></path><path d="M12 11c0-4 3-6 3-6s0 4-3 6z"></path><path d="M12 13c0-4-3-6-3-6s0 4 3 6z"></path></svg>
         </div>
         <b data-count="6800" data-suffix="">6,800</b>
-        <div class="impact-title">Trees Worth of CO₂ Absorption Saved</div>
-        <p>Clean energy that protects our planet — one home at a time</p>
+        <div class="impact-title" data-i18n="impact_3_label">Trees Worth of CO₂ Absorption Saved</div>
+        <p data-i18n="impact_3_desc">Clean energy that protects our planet — one home at a time</p>
       </div>
     </div>
   </div>
@@ -303,8 +318,8 @@
 <section class="sec reviews-sec" id="reviews">
   <div class="wrap">
     <div class="head head-center">
-      <h2>What Homeowners Are Saying</h2>
-      <p>Join thousands of satisfied homeowners who made the switch to solar with Hybrid Energy</p>
+      <h2 data-i18n="reviews_title">What Homeowners Are Saying</h2>
+      <p data-i18n="reviews_sub">Join thousands of satisfied homeowners who made the switch to solar with Hybrid Energy</p>
     </div>
   </div>
   <div class="marquee" aria-label="Customer reviews marquee">
@@ -316,37 +331,37 @@
 <section class="sec sec-gray" id="faq">
   <div class="wrap narrow">
     <div class="head head-center">
-      <h2>Frequently Asked Questions</h2>
-      <p>Everything you need to know about going solar with Hybrid Energy</p>
+      <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+      <p data-i18n="faq_sub">Everything you need to know about going solar with Hybrid Energy</p>
     </div>
     <div class="faq-list">
       <details>
-        <summary>What areas do you serve?</summary>
-        <p>All across the U.S.</p>
+        <summary data-i18n="faq_1_q">What areas do you serve?</summary>
+        <p data-i18n="faq_1_a">All across the U.S.</p>
       </details>
       <details>
-        <summary>Why should I switch to solar?</summary>
-        <p>Save money, increase home value, gain energy independence</p>
+        <summary data-i18n="faq_2_q">Why should I switch to solar?</summary>
+        <p data-i18n="faq_2_a">Save money, increase home value, gain energy independence</p>
       </details>
       <details>
-        <summary>Can I really afford solar?</summary>
-        <p>Yes — most qualify for $0 down with instant savings</p>
+        <summary data-i18n="faq_3_q">Can I really afford solar?</summary>
+        <p data-i18n="faq_3_a">Yes — most qualify for $0 down with instant savings</p>
       </details>
       <details>
-        <summary>Do you install the solar panels yourselves?</summary>
-        <p>No — we act as your broker, comparing the whole market to match you with the very best product, partner, and deal for your home.</p>
+        <summary data-i18n="faq_4_q">Do you install the solar panels yourselves?</summary>
+        <p data-i18n="faq_4_a">No — we act as your broker, comparing the whole market to match you with the very best product, partner, and deal for your home.</p>
       </details>
       <details>
-        <summary>How long does the process take?</summary>
-        <p>Faster than your utility company answers the phone.</p>
+        <summary data-i18n="faq_5_q">How long does the process take?</summary>
+        <p data-i18n="faq_5_a">Faster than your utility company answers the phone.</p>
       </details>
       <details>
-        <summary>What is TPO and why is it the best option in 2026?</summary>
-        <p>$0 down solar with guaranteed savings</p>
+        <summary data-i18n="faq_6_q">What is TPO and why is it the best option in 2026?</summary>
+        <p data-i18n="faq_6_a">$0 down solar with guaranteed savings</p>
       </details>
       <details>
-        <summary>What is Safe Harboring?</summary>
-        <p>Lock in today's rates before they change</p>
+        <summary data-i18n="faq_7_q">What is Safe Harboring?</summary>
+        <p data-i18n="faq_7_a">Lock in today's rates before they change</p>
       </details>
     </div>
   </div>
@@ -356,54 +371,54 @@
 <section class="sec" id="contact">
   <div class="wrap split form-wrap">
     <div>
-      <h2>Ready to Start Saving?</h2>
-      <p class="lead">Get your free solar analysis and discover how much you can save with Hybrid Energy™</p>
+      <h2 data-i18n="form_title">Ready to Start Saving?</h2>
+      <p class="lead" data-i18n="form_lead">Get your free solar analysis and discover how much you can save with Hybrid Energy™</p>
       <div class="trust-list">
         <div class="trust-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
-          <span><strong>100% Free Consultation</strong></span>
+          <span data-i18n="trust_1"><strong>100% Free Consultation</strong></span>
         </div>
         <div class="trust-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
-          <span><strong>Response in 24 Hours</strong></span>
+          <span data-i18n="trust_2"><strong>Response in 24 Hours</strong></span>
         </div>
         <div class="trust-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
-          <span><strong>Your Information is Secure</strong></span>
+          <span data-i18n="trust_3"><strong>Your Information is Secure</strong></span>
         </div>
       </div>
       <a href="#" id="smsBtn" class="btn btn-line btn-sms">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="13" y2="13"></line></svg>
-        Text Us
+        <span data-i18n="text_us">Text Us</span>
       </a>
     </div>
 
     <form id="form" class="form" novalidate>
       <div class="field">
-        <label for="f-name">Full Name *</label>
-        <input id="f-name" name="name" type="text" placeholder="John Smith" autocomplete="name" required>
+        <label for="f-name" data-i18n="f_name_lbl">Full Name *</label>
+        <input id="f-name" name="name" type="text" placeholder="John Smith" data-i18n-ph="f_name_ph" autocomplete="name" required>
       </div>
       <div class="field">
-        <label for="f-email">Email Address *</label>
-        <input id="f-email" name="email" type="email" placeholder="john@example.com" autocomplete="email" required>
+        <label for="f-email" data-i18n="f_email_lbl">Email Address *</label>
+        <input id="f-email" name="email" type="email" placeholder="john@example.com" data-i18n-ph="f_email_ph" autocomplete="email" required>
       </div>
       <div class="field">
-        <label for="f-phone">Phone Number *</label>
-        <input id="f-phone" name="phone" type="tel" placeholder="(555) 123-4567" autocomplete="tel" required>
+        <label for="f-phone" data-i18n="f_phone_lbl">Phone Number *</label>
+        <input id="f-phone" name="phone" type="tel" placeholder="(555) 123-4567" data-i18n-ph="f_phone_ph" autocomplete="tel" required>
       </div>
       <div class="field">
-        <label for="f-bill">Average Monthly Electric Bill *</label>
-        <input id="f-bill" name="bill" type="text" placeholder="$150" required>
+        <label for="f-bill" data-i18n="f_bill_lbl">Average Monthly Electric Bill *</label>
+        <input id="f-bill" name="bill" type="text" placeholder="$150" data-i18n-ph="f_bill_ph" required>
       </div>
       <div class="field full">
-        <label for="f-address">Home Address *</label>
-        <input id="f-address" name="address" type="text" placeholder="123 Main St, City, State, ZIP" autocomplete="street-address" required>
+        <label for="f-address" data-i18n="f_address_lbl">Home Address *</label>
+        <input id="f-address" name="address" type="text" placeholder="123 Main St, City, State, ZIP" data-i18n-ph="f_address_ph" autocomplete="street-address" required>
       </div>
       <label class="consent">
         <input name="sms_consent" type="checkbox">
-        <span><b>SMS/Text Messaging Consent:</b> By providing my phone number and checking this box, I consent to receive text messages from Hybrid Energy regarding my solar consultation, appointment reminders, installation updates, and promotional offers. Message frequency varies. Message and data rates may apply. Reply STOP to opt-out or HELP for support. Consent is not required to purchase services.</span>
+        <span data-i18n="consent_text"><b>SMS/Text Messaging Consent:</b> By providing my phone number and checking this box, I consent to receive text messages from Hybrid Energy regarding my solar consultation, appointment reminders, installation updates, and promotional offers. Message frequency varies. Message and data rates may apply. Reply STOP to opt-out or HELP for support. Consent is not required to purchase services.</span>
       </label>
-      <button class="btn btn-teal btn-full" id="submitBtn" type="submit">Get My Free Solar Analysis</button>
+      <button class="btn btn-teal btn-full" id="submitBtn" type="submit" data-i18n="form_btn">Get My Free Solar Analysis</button>
       <p class="msg" id="msg" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -414,21 +429,21 @@
   <div class="wrap foot-grid">
     <div class="foot-about">
       <a href="#top" class="foot-logo"><img src="assets/logo-completa.png" alt="Hybrid Energy" width="160" height="92"></a>
-      <p>Leading the solar revolution with innovative renewable energy solutions for homes and businesses across America.</p>
+      <p data-i18n="footer_about">Leading the solar revolution with innovative renewable energy solutions for homes and businesses across America.</p>
     </div>
     <div class="foot-col">
-      <h4>Quick Links</h4>
+      <h4 data-i18n="footer_quick_links">Quick Links</h4>
       <ul class="foot-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#benefits">Benefits</a></li>
-        <li><a href="#tpo">Tax Credits &amp; TPO</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Free Quote</a></li>
+        <li><a href="#how-it-works" data-i18n="nav_how">How It Works</a></li>
+        <li><a href="#benefits" data-i18n="nav_why">Why Switch</a></li>
+        <li><a href="#tpo" data-i18n="nav_tpo">2026 TPO Solar</a></li>
+        <li><a href="#reviews" data-i18n="nav_reviews">Reviews</a></li>
+        <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+        <li><a href="#contact" data-i18n="cta_quote">Free Quote</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h4>Contact Us</h4>
+      <h4 data-i18n="footer_contact">Contact Us</h4>
       <ul class="foot-contact-list">
         <li>
           <a href="tel:+17257260590">
@@ -445,14 +460,14 @@
         <li>
           <a href="#" class="sms-link">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="13" y2="13"></line></svg>
-            Text Us (SMS)
+            <span data-i18n="footer_text_us">Text Us (SMS)</span>
           </a>
         </li>
       </ul>
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <p class="copy">© <span id="year"></span> Hybrid Energy. All rights reserved.</p>
+    <p class="copy">© <span id="year"></span> <span data-i18n="footer_copy">Hybrid Energy. All rights reserved.</span></p>
   </div>
 </footer>
 
