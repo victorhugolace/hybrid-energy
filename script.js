@@ -476,11 +476,15 @@ function setLanguage(lang) {
     }
   });
 
-  // Atualiza botão do idioma
-  const langLabel = $("#langLabel");
-  const langToggle = $("#langToggle");
-  if (langLabel) langLabel.textContent = dict.lang_toggle;
-  if (langToggle) langToggle.setAttribute("aria-label", dict.lang_aria);
+  // Atualiza botões do switcher de idioma
+  const btnEn = $("#btnLangEn");
+  const btnEs = $("#btnLangEs");
+  if (btnEn && btnEs) {
+    btnEn.classList.toggle("active", lang === "en");
+    btnEs.classList.toggle("active", lang === "es");
+    btnEn.setAttribute("aria-pressed", lang === "en");
+    btnEs.setAttribute("aria-pressed", lang === "es");
+  }
 
   // Atualiza depoimentos
   renderReviews(lang);
@@ -492,12 +496,13 @@ function setLanguage(lang) {
   setTheme(currentTheme);
 }
 
-const langToggle = $("#langToggle");
-if (langToggle) {
-  langToggle.addEventListener("click", () => {
-    const nextLang = currentLang === "es" ? "en" : "es";
-    setLanguage(nextLang);
-  });
+const btnLangEn = $("#btnLangEn");
+const btnLangEs = $("#btnLangEs");
+if (btnLangEn) {
+  btnLangEn.addEventListener("click", () => setLanguage("en"));
+}
+if (btnLangEs) {
+  btnLangEs.addEventListener("click", () => setLanguage("es"));
 }
 
 /* Lead Form */

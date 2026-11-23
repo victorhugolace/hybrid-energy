@@ -212,15 +212,54 @@ h4 {
 .header-tools {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gray);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--mut);
+  font: 700 12px var(--hd);
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.lang-btn.active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.flag-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .12);
+  flex-shrink: 0;
+  display: block;
 }
 
 .tool-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
   border: 1.5px solid var(--line);
   background: var(--gray);
@@ -249,6 +288,33 @@ h4 {
 }
 .theme-btn .icon-moon {
   display: block;
+}
+
+[data-theme="dark"] .lang-switch {
+  background: #111721;
+  border-color: rgba(255, 255, 255, .1);
+}
+
+[data-theme="dark"] .lang-btn {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .lang-btn.active {
+  background: #1c2738;
+  color: var(--teal);
+  box-shadow: 0 0 12px rgba(31, 242, 210, .25);
+}
+
+[data-theme="dark"] .tool-btn {
+  background: #111721;
+  border-color: rgba(255, 255, 255, .1);
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .tool-btn:hover {
+  background: #1c2738;
+  border-color: var(--teal);
+  color: var(--teal);
 }
 
 [data-theme="dark"] .theme-btn .icon-sun {
@@ -1266,8 +1332,6 @@ details p {
    DARK THEME STYLES
    ============================================================ */
 [data-theme="dark"] {
-  --ink: #f1f5f9;
-  --ink-2: #080c11;
   --mut: #94a3b8;
   --line: rgba(255, 255, 255, .1);
   --gray: #121922;
@@ -1276,6 +1340,71 @@ details p {
 [data-theme="dark"] body {
   background: #0b0f15;
   color: #c2cbd4;
+}
+
+/* 2026 TPO Solar in Dark Theme - deep dark background with crisp white text */
+[data-theme="dark"] .dark {
+  background: radial-gradient(800px 420px at 85% 10%, rgba(31, 242, 210, .14), transparent 60%),
+              radial-gradient(600px 300px at 0% 100%, rgba(31, 242, 210, .06), transparent 60%),
+              #070b10 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .dark .head h2 {
+  color: #fff !important;
+}
+
+[data-theme="dark"] .dark .head p {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .tpo-card {
+  background: #111721 !important;
+  border: 1px solid rgba(255, 255, 255, .08) !important;
+}
+
+[data-theme="dark"] .tpo-card h3 {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .tpo-card p {
+  color: #94a3b8 !important;
+}
+
+/* Impact Section in Dark Theme */
+[data-theme="dark"] .impact {
+  background: #070b10 !important;
+  color: #fff !important;
+}
+
+[data-theme="dark"] .impact-head h2 {
+  color: #fff !important;
+}
+
+[data-theme="dark"] .impact-head p {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .impact-box {
+  background: #111721 !important;
+  border: 1px solid rgba(255, 255, 255, .08) !important;
+}
+
+[data-theme="dark"] .impact-title {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .impact-box p {
+  color: #94a3b8 !important;
+}
+
+/* Dark badges and icons */
+[data-theme="dark"] .icon-wrap,
+[data-theme="dark"] .steps span,
+[data-theme="dark"] .review-av {
+  background: #070b10 !important;
+  border: 1px solid rgba(31, 242, 210, .3) !important;
+  color: var(--teal) !important;
 }
 
 [data-theme="dark"] .header {
